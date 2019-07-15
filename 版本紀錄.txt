@@ -1,0 +1,87 @@
+scp -r james@140.117.176.184:/media/james/7CB09435B093F43C/GoogleDrive/Github/school/experiment/v2.3 ~/
+
+scp -r antonyteng@192.168.77.201:/media/antonyteng/e/3.gwgha_025-taichung_taipei-30_500_60 /mnt/d/
+
+scp -P 17027 -r foroslab@140.120.182.6:/home/foroslab/4.gwgha_025-taichung_taipei-30_375_80 /mnt/d/
+
+sudo debugfs -R 'ls -d /media/antonyteng/e' /dev/sdd1
+
+export SUMO_HOME="/usr/local/src/sumo-0.30.0"
+export SUMO_HOME="/mnt/d/sumo-0.30.0"
+
+export SUMO_HOME="/usr/local/src/sumo-0.32.0"
+export SUMO_HOME="/usr/local/src/sumo-1
+/usr/local/src/sumo-0.30.0-m
+
+echo $SUMO_HOME
+
+if install sumo use apt-get
+    export SUMO_HOME="/usr/share/sumo"
+如果script.sh不能執行
+    chmod 777 script.sh
+
+version 0.1.1 完成遇黃燈固定duration為5，優化寫檔效能
+version 0.1.2 加入matplotlib
+    步驟1 apt-get install python-tk
+    步驟2 python -mpip install matplotlib
+version 0.2 嘗試使用traci來控制
+    無法使用traci 原因：
+    When using TraCI there are some common tasks which are "not" covered by the traci library such as
+        Analyzing the road network
+        Parsing simulation outputs
+    實驗必須取的每次模擬的輸出，所以traci 放棄
+version 0.1.3 修正phase大小
+version 0.2 改用multiprocess執行模擬器，加速初始過程
+version 0.2.1 新增時間紀錄
+version 0.2.2 加入debug info (刪)
+        0.2.2.1 改debug info output
+        0.2.2.2 加入 check upper lower bound（fix big , but compare before result is not good
+version 0.3 輸出gloabfitness 和 gloabpopulation
+version 0.4 加入linear model
+version 0.4.1 修改變數名稱
+version 0.5 model迭代次數過多後，會有極端值出現，model的方向與sumo開始有偏差，
+            目前想到的方式為每次iteration中，找出由model計算出有最小的fitness的population ，將population 帶入sumo 
+            得到temp_fitness並與原本最小的sumo_fitness(在更新speed時使用，原本的gloab_fitness)比較，
+            若成立則更新sumo_fitness & sumo_population。因每次只須執行1次sumo，所以捨去multiprocess
+            目前問題：無法收斂
+version 1.0 更新model方式，改由complete_Veh_num,incomplete_Veh_num,complete_duration,waitingTime等資料組成
+            將原程式分成pso_class.py ,simulate_class.py 執行以及 run.py
+version 1.0.1 迭代最後一次以sumo來驗證模型準確性
+version 1.2 將multiprocess加入到新版code中
+version 1.3 add new version pso.py and spso2011.py
+version 1.4 加入 get_result.py 取得 10round 的 ave , max ,min ,std 
+version 1.5 加入 mbo_class.py
+version 1.6 加入 vector_goa.py , 修改 vector_gwo 更新效能，使用numpy計算
+version 1.7 加入 vector_spso2011gwo ,原本gwo.py 改為gwo_m.py( 結果最好的版本)
+        1.7.1 修改所有判斷上下界的程式碼
+        1.7.2 使用scripy.sh 執行程式
+version 1.8 加入 gwo_m_v0.py ，vector_goagwo_m_v0.py
+        1.8.1 使用 result.py
+        1.8.2 修改spso2011.py 輸出bug , 修改multioprocess啟動位置
+version 1.9 加入畫圖程式(c develop)
+        1.9.1 修正畫圖時的資料，改為每一個iteration的值以30 round的平均
+        1.9.2 輸出檔案分為Round_record , position , ave_convergence
+        1.9.3 vector_goagwo_m_v0 重命名為 gwogoaha
+version 2.0 增加goagwoha_v1，修改gwo(學長建議方式)
+version 2.0.1 刪除fitness_class.py
+version 2.1 新增輸出內容 fitness, complete_duration, complete_Veh_num, incomplete_Veh_num, waitingTime
+version 2.1.1 修改輸出bug
+version 2.1.2 原本gwogoaha改為gwo_mgoaha，新加入gwogoaha.py
+version 2.2 加入pso_TL （速度有做判斷）實驗結果預計放入conference
+version 2.2.1 修改畫圖程式
+version 2.3 (v3.1 更新地圖資訊)
+            加入 Taichung地圖 和 Taichung路線500
+            加入 Taipei 和 Taipei路線500
+version 2.3.1 自動建立輸出資料夾
+        2.3.2 修正output 資料夾建立失敗問題
+version 2.4 script.sh 能夠指定演算法，修正不同算法需要修改simulate.py的內容問題
+version 2.5 以evlution紀錄，只保留最好，對於每次evultion將比較當前粒子與歷史最好，若歷史最好比當前好，則當前的evlution紀錄歷史最好
+version 2.6 修改在terminal輸出格式，需修改sumo原始程式碼
+version 3.0 將所有gwo_mgoaha 改成 gwgha
+version 3.0.1 run.py 增加 map_name_vs()對應地圖縮寫
+version 3.1 修改台中(480)和台北(600)測試資料
+            alameda,74(148),500
+            rivadavia,121(242),500
+            kaohsiung,320(640),500
+            taichung,460(960),500
+            Taipei,1045(2090),500

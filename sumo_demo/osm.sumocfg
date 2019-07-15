@@ -1,0 +1,32 @@
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+   <input>
+        <net-file value="alameda/alameda.net.xml" />
+        <route-files value="alameda/alameda500.rou.xml" />
+        <additional-files value="alameda/optimize_alameda.add.xml" />
+    </input>
+
+    <output>
+        <tripinfo-output value="out.xml" />
+        <tripinfo-output.write-unfinished value="true" />
+        
+    </output>
+
+    <time>
+        <begin value="0" />
+        <end value="500" />
+    </time>
+    
+    <processing>
+        <ignore-route-errors value="true" />
+    </processing>
+
+    <report>
+        <duration-log.statistics value="false" />
+        <no-step-log value="true" />
+        <no-warnings value="true" />
+    </report> 
+    
+    <gui_only>
+        <gui-settings-file value="osm.view.xml" />
+    </gui_only>
+</configuration>
