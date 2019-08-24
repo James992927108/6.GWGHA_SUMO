@@ -1,8 +1,8 @@
 scp -r james@140.117.176.184:/media/james/7CB09435B093F43C/GoogleDrive/Github/school/experiment/v2.3 ~/
 
-scp -r antonyteng@192.168.77.201:/media/antonyteng/e/3.gwgha_025-taichung_taipei-30_500_60 /mnt/d/
+scp -r antonyteng@192.168.77.201:/media/antonyteng/e/1.taichung_taipei-30_750_40 /mnt/d/
 
-scp -P 17027 -r foroslab@140.120.182.6:/home/foroslab/4.gwgha_025-taichung_taipei-30_375_80 /mnt/d/
+scp -P 17027 -r foroslab@140.120.182.6:/home/foroslab/2.gwgha_075-taichung_taipei-30_750_40 /mnt/d/
 
 sudo debugfs -R 'ls -d /media/antonyteng/e' /dev/sdd1
 
@@ -85,3 +85,5 @@ version 3.1 修改台中(480)和台北(600)測試資料
             kaohsiung,320(640),500
             taichung,460(960),500
             Taipei,1045(2090),500
+version 3.2 新加入 gwgha_025_single 和 _Round_position.txt 
+            "_Round.txt" 改成 "_Round_evaluation.txt"

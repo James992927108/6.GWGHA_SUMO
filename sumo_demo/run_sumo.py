@@ -21,14 +21,26 @@ def check_sumo_version():
     subprocess.call(sumoCmd, stdout=sys.stdout, stderr=sys.stderr)
 
 
-def get_map_name(name):
+def vs_to_map_name(vs):
     return {
-        "a":"alameda",
-        "r":"rivadavia",
-        "k":"kaohsiung",
-        "tc":"taichung",
-        "tp":"taipei"
-        }.get(name,"alameda")
+        'a':'alameda',
+        'r':'rivadavia',
+        'k':'kaohsiung',
+        'tc':'taichung',
+        'tp':'taipei',
+        'undefined': 'undefined',
+        }.get(vs,'undefined')
+
+def map_name_to_vs(map_name):
+        
+    return {
+        'alameda':'a',
+        'rivadavia': 'r',
+        'kaohsiung': 'k',
+        'taichung': 'tc',
+        'taipei': 'tp',
+        'undefined': 'undefined',
+    }.get(map_name, 'undefined')
 
 class simulate_sumo_demo():
     def __init__(self, map, road, gui ,optimize):
@@ -104,7 +116,7 @@ class simulate_sumo_demo():
 if __name__ == "__main__":
     # check_sumo_version()
     gui = str(sys.argv[1])
-    map_name = get_map_name(str(sys.argv[2]))
+    map_name = str(sys.argv[2])
     road_select = str(sys.argv[3])
     optimize = str(sys.argv[4])
     sumo = simulate_sumo_demo(map = map_name, road = road_select, gui = gui, optimize = optimize)
