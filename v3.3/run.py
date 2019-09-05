@@ -29,6 +29,7 @@ from algo.gwo.gwgha_075 import gwgha_075
 from algo.gwo.gwgha_1 import gwgha_1
 
 from algo.gwo.gwgha_025_single import gwgha_025_single
+from algo.gwo.gwgha_auto import gwgha_auto
 
 from algo.gwo.gwo import gwo
 from algo.gwo.gwo_m import gwo_m
@@ -70,7 +71,8 @@ def algo_map(algo_name):
         'gwogoaha_075': gwogoaha_075,
         'gwogoaha_1': gwogoaha_1,
         'gwgha_025_single': gwgha_025_single,
-    }.get(algo_name, 'gwo_mgoaha')
+        'gwgha_auto': gwgha_auto,
+    }.get(algo_name, 'gwgha_025')
 
 def map_name_vs(map_name):
         

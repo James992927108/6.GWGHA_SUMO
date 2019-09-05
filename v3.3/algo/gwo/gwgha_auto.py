@@ -50,10 +50,11 @@ class gwgha_auto:
             if iter % self.sign_num == 0 and iter !=0:
                 sign = self.get_sign()
 
-            if sign == 0.0:
-                a = self.Max - iter * self.Max /self.iteration
-            else:
+            if sign == 0:
                 a = self.Cmax - iter * (self.Cmax - self.Cmin) / self.iteration  
+            else:
+                a = self.Max - iter * self.Max /self.iteration
+
 
             for i in range(self.n_point):
                 A1 = (2 * a * random.random()) - a
@@ -105,11 +106,8 @@ class gwgha_auto:
         return self.Alpha_pos , self.SimulateResult_List
 
     def get_sign(self):
-        temp_list = self.lastResult_list[-self.sign_num:]
-        # print "{}".format(temp_list)
         start = self.lastResult_list[-self.sign_num]
         end = self.lastResult_list[-1]
-        # print "start: {}, end: {}".format(start, end)
         sign = (start - end) / self.sign_num
         # sign = np.gradient([start, end])
         print "sign: {}".format(sign)

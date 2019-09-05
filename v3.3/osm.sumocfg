@@ -1,8 +1,8 @@
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="input/map/alameda/alameda.net.xml" />
-        <route-files value="input/road/alameda/alameda1000.rou.xml" />   
+        <net-file value="input/map/rivadavia/rivadavia.net.xml" />
+        <route-files value="input/road/rivadavia/rivadavia500.rou.xml" />   
     </input>
 
     <output>
