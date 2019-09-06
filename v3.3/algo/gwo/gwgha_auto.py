@@ -44,9 +44,9 @@ class gwgha_auto:
     def move_swarm(self):
         sign = 1
         for iter in range(self.iteration):
-            # sys.stdout.write("\riter %d / %d , %f%%" % (iter + 1, self.iteration, (iter + 1) * 100 / self.iteration))
-            # sys.stdout.flush()
-            print "iteration: {}".format(iter)
+            sys.stdout.write("\riter %d / %d , %f%%" % (iter + 1, self.iteration, (iter + 1) * 100 / self.iteration))
+            sys.stdout.flush()
+            
             if iter % self.sign_num == 0 and iter !=0:
                 sign = self.get_sign()
 
@@ -110,7 +110,7 @@ class gwgha_auto:
         end = self.lastResult_list[-1]
         sign = (start - end) / self.sign_num
         # sign = np.gradient([start, end])
-        print "sign: {}".format(sign)
+        # print "sign: {}".format(sign)
         return sign
 
     def get_xi(self , i , a):
