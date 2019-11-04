@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-
+import numpy as np
 
 def get_last_level_folder_path(path):
     dirPath_list = []
@@ -20,12 +20,32 @@ def get_all_txt_path(path):
                 txt_path_list.append(os.path.join(dirPath, f))
     return txt_path_list
 
-
 def get_txt_context(txt_path):
-    values = [value for value in open(txt_path).read().split(
+    values = [float(value.replace('[','').replace(']','')) for value in open(txt_path).read().split(
     ) if filter(lambda ch: ch in '0123456789.', value) != ""]
+    if "_complete_veh_num.txt" in txt_path:
+        values = get_reconvergence_list(values)
+    else:
+        values = get_convergence_list(values)     
     return values
 
+def get_convergence_list(values_list):
+    temp_convergence_list = []
+    temp = float("inf")
+    for x in values_list:
+        if x < temp:
+            temp = x
+        temp_convergence_list.append(temp)
+    return np.asarray(temp_convergence_list)
+
+def get_reconvergence_list(values_list):
+    temp_convergence_list = []
+    temp = 0
+    for x in values_list:
+        if x > temp:
+            temp = x
+        temp_convergence_list.append(temp)
+    return np.asarray(temp_convergence_list)
 
 def write_file(output_path, values):
     with open(output_path, "w") as det_file:
