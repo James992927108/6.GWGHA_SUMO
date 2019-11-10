@@ -1,2 +1,1 @@
-sumo_experiment_result/*.txt
-sumo_experiment_result/*.dat
+sumo_experiment_result/*
